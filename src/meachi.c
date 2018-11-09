@@ -100,6 +100,7 @@ PyObject* meachi(PyObject* self, PyObject* args){
 			if(index<0) break; // end message from BOSS
 			aaa = PyTuple_Pack(1,PyList_GetItem(arglist,index));
 			PyObject_Call(func, aaa ,NULL);
+			PyErr_Clear();
 			MPI_Send(&retv,1,MPI_INT,0,0,MPI_COMM_WORLD); // send completion message to BOSS
 		}
 	}
